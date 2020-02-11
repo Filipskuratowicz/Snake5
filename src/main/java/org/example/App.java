@@ -1,21 +1,15 @@
 package org.example;
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.example.Controls.ControlKey;
+import org.example.Controls.EndOfGame;
+import org.example.storage.BlockList;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * JavaFX App
@@ -23,19 +17,12 @@ import java.util.Scanner;
 public class App extends Application {
 
     static int blockSize = 10;
-
     int width = 30;
     int height = 30;
+    EndOfGame endOfGame;
 
-
-
-
-    Block block;
     @Override
     public void start(Stage stage) throws InterruptedException {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
-
 
         VBox vBox = new VBox(10);
         vBox.setPadding(new Insets(10));
@@ -51,36 +38,44 @@ public class App extends Application {
         stage.show();
 
 
-        AnimationTimer timer = new AnimationTimer() {
+        EndOfGame endOfGame = new EndOfGame();
+        BlockList blockList = new BlockList();
+        ArrayList arrayList = blockList.BlockCloneList();
+
+        AnimationTimerExt timer = new AnimationTimerExt(100) {
 
             @Override
-            public void handle(long now) {
+            public void handle() {
+                block.update();
 
-            block.update();
+                //////////
+                String s = block.toString();
+                System.out.println(s);
 
+                endOfGame.crashOnBand(stage, block);
+                endOfGame.crashOnYourself(stage, block, arrayList);
+                /////////
+
+                BlockClone blockClonned = new BlockClone(block.getPosX(), block.getPosY(), null);
+                blockList.addToQueue(blockClonned);
+//                System.out.println(blockClonned.toString()  + "!!!!!!!ZApp!!!!");
+                field.addCloneBlock(blockClonned);
+                System.out.println( System.currentTimeMillis());
+
+
+
+                if (blockList.blockListSize() >= 20) {
+                    blockList.removeFromScene();
+                }
             }
         };
+
+
         timer.start();
-        scene.setOnKeyPressed(e -> {
-            System.out.println("I clicked");
-            if (e.getCode().equals(KeyCode.UP)) {
-                block.updateEvent(8);
-                System.out.println("8");
-            }
-            if (e.getCode().equals(KeyCode.DOWN)) {
-                block.updateEvent(5);
-                System.out.println("5");
-            }
-            if (e.getCode().equals(KeyCode.RIGHT)) {
-                block.updateEvent(6);
-                System.out.println("6");
-            }
-            if (e.getCode().equals(KeyCode.LEFT)) {
-                block.updateEvent(4);
-                System.out.println("4");
-            }
-        });
-        }
+        ControlKey controlKey = new ControlKey();
+        controlKey.keyControllers(scene, block);
+
+    }
 
 
     public static void main(String[] args) {

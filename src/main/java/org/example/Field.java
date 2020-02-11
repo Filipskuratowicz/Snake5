@@ -1,16 +1,13 @@
 package org.example;
 
-import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
-import java.util.ArrayList;
 
 public class Field extends Pane {
     App app;
     private int w;
     private int h;
-    Snake snake;
+//    Snake snake;
 
 //    ArrayList<Block> blocks = new ArrayList<>();
     public Field(int width, int height) {
@@ -21,16 +18,22 @@ public class Field extends Pane {
     setBackground(new Background(new BackgroundFill(Color.ANTIQUEWHITE, null, null)));
     setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2))));
     }
+//
+//    public void addSnake(Snake s) {
+//        snake = s;
+//
+//        for (Block block : snake.blocks) {
+//            addBlock(block);
+//        }
 
-    public void addSnake(Snake s) {
-        snake = s;
 
-        for (Block block : snake.blocks) {
-            addBlock(block);
-        }
-    }
+
+//    }
 
     public void addBlock(Block block) {
+        getChildren().add(block);
+    }
+    public void addCloneBlock(BlockClone block) {
         getChildren().add(block);
     }
 
