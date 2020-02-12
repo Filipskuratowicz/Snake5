@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.Controls.ControlKey;
 import org.example.Controls.EndOfGame;
+import org.example.Controls.FoodCotrol;
 import org.example.storage.BlockList;
 
 import java.util.ArrayList;
@@ -41,39 +42,32 @@ public class App extends Application {
         EndOfGame endOfGame = new EndOfGame();
         BlockList blockList = new BlockList();
         ArrayList arrayList = blockList.BlockCloneList();
-
+        FoodCotrol foodCotrol = new FoodCotrol();
+        Food food = new Food(1, 1, null);
+        field.addFood(food);
         AnimationTimerExt timer = new AnimationTimerExt(100) {
 
             @Override
             public void handle() {
                 block.update();
-
+                foodCotrol.nextFood(food, block, blockList.BlockCloneList());
                 //////////
                 String s = block.toString();
-                System.out.println(s);
-
+//                System.out.println(s);
                 endOfGame.crashOnBand(stage, block);
                 endOfGame.crashOnYourself(stage, block, arrayList);
                 /////////
-
                 BlockClone blockClonned = new BlockClone(block.getPosX(), block.getPosY(), null);
                 blockList.addToQueue(blockClonned);
-//                System.out.println(blockClonned.toString()  + "!!!!!!!ZApp!!!!");
                 field.addCloneBlock(blockClonned);
-                System.out.println( System.currentTimeMillis());
-
-
-
-                if (blockList.blockListSize() >= 20) {
-                    blockList.removeFromScene();
-                }
+                blockList.removeFromScene(scene, blockList, foodCotrol.snakeElongate() );
             }
         };
 
 
         timer.start();
         ControlKey controlKey = new ControlKey();
-        controlKey.keyControllers(scene, block);
+        controlKey.keyControllers(scene, block, stage);
 
     }
 

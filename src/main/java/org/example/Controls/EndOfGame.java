@@ -30,7 +30,7 @@ public class EndOfGame extends Stage {
 
     public void crashOnYourself(Stage stage, Block block, ArrayList<BlockClone> arr) {
         for (BlockClone o : arr) {
-            System.out.println( " Posx blockClone = " + o.getPosx() + " block =" + block.getPosX());
+//            System.out.println( " Posx blockClone = " + o.getPosx() + " block =" + block.getPosX());
         }
             arr.stream().skip(1).forEach(e -> {
                 if (e.getPosy()*10 == block.getPosY() && e.getPosx()*10 == block.getPosX()) {

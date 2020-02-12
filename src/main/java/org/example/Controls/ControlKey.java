@@ -2,12 +2,13 @@ package org.example.Controls;
 
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 import org.example.Block;
 
 public class ControlKey {
 
 
-    public void keyControllers(Scene scene, Block block) {
+    public void keyControllers(Scene scene, Block block, Stage stage) {
 
         scene.setOnKeyPressed(e -> {
             System.out.println("I clicked");
@@ -27,6 +28,11 @@ public class ControlKey {
                 block.updateEvent(4);
                 System.out.println("4");
             }
+            if (e.getCode().equals(KeyCode.ESCAPE)) {
+                stage.hide();
+                System.out.println("END OF THE GAME");
+            }
+
         });
     }
 }
