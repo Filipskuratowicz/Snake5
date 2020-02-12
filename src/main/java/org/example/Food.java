@@ -13,7 +13,7 @@ public class Food extends Rectangle {
         posy = y;
         setTranslateX(posx * App.blockSize);
         setTranslateY(posy * App.blockSize);
-//        System.out.println("nowy Block wygenerownay");
+
     }
 
 

@@ -25,17 +25,21 @@ public class BlockList {
         return blockQueue;
     }
 
+
     public void removeFromScene(Scene scene, BlockList blockList, int lenght) {
+
+
         if (blockList.blockListSize() >= lenght) {
-            blockList.removeFromScene();
+//            blockList.removeFromScene();
+            BlockClone bC = blockQueue.get(1);
+            bC.setPositionOutside(400,400);
+            blockQueue.remove(1);
     }
 }
 
-    public void removeFromScene() {
-        BlockClone bC = blockQueue.get(1);
-        System.out.println(bC.toString());
-        System.out.println(bC.toString());
-        bC.setPositionOutside(400,400);
-        blockQueue.remove(1);
-    }
+//    public void removeFromScene() {
+//        BlockClone bC = blockQueue.get(1);
+//        bC.setPositionOutside(400,400);
+//        blockQueue.remove(1);
+//    }
 }

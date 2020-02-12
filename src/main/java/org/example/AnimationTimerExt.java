@@ -13,7 +13,7 @@ public abstract class  AnimationTimerExt extends AnimationTimer {
     }
 
     public void setSleepNs(long sleepNs) {
-        this.sleepNs = sleepNs;
+        this.sleepNs = sleepNs* 1_000_000;
     }
 
     @Override

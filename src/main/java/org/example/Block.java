@@ -2,6 +2,7 @@ package org.example;
 
 
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 
@@ -11,6 +12,8 @@ public class Block extends Rectangle {
     protected int direction;
     int posx;
     int posy;
+    boolean dirChange = true;
+
 
     public Block(int x, int y, Block b) {
         super(App.blockSize, App.blockSize);
@@ -18,7 +21,7 @@ public class Block extends Rectangle {
         posy = y;
         setTranslateX(posx * App.blockSize);
         setTranslateY(posy * App.blockSize);
-
+        setFill(Color.CYAN);
     }
 
 

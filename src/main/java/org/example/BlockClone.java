@@ -7,23 +7,17 @@ public class BlockClone extends Rectangle  {
         private int posx;
         private int posy;
 
-
-
            public BlockClone(int x, int y, org.example.Block b){
         super(App.blockSize, App.blockSize);
         posx = x/10;
         posy = y/10;
         setTranslateX(posx * App.blockSize);
         setTranslateY(posy * App.blockSize);
-//        System.out.println("nowy Block wygenerownay");
     }
-
-
 
     public void setPositionOutside(int positionY, int positionX) {
         setTranslateY(positionY);
         setTranslateX(positionX);
-
     }
 
     @Override
