@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 
 public class BlockList {
+    boolean first = true;
 
     ArrayList<BlockClone> blockQueue=new ArrayList<>() {
     };
@@ -26,9 +27,11 @@ public class BlockList {
     }
 
 
-    public void removeFromScene(Scene scene, BlockList blockList, int lenght) {
-
-
+    public void removeFromScene(Scene scene, BlockList blockList, int lenght, BlockClone blC) {
+        if (blC.getPosy() == 15 && blC.getPosx() == 15 && first == true) {
+            blC.setPositionOutside(400, 400);
+            first = false;
+        }
         if (blockList.blockListSize() >= lenght) {
 //            blockList.removeFromScene();
             BlockClone bC = blockQueue.get(1);

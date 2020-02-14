@@ -35,6 +35,9 @@ public class App extends Application {
         vBox.getChildren().add(field);
 
         Block block = new Block(15, 15, null);
+
+
+
         field.addBlock(block);
 
 
@@ -60,11 +63,13 @@ public class App extends Application {
 
 
                 BlockClone blockClonned = new BlockClone(block.getPosX(), block.getPosY(), null);
+                String s = blockClonned.toString();
+                System.out.println(s);
                 blockList.addToQueue(blockClonned);
                 field.addCloneBlock(blockClonned);
                 block.update();
 
-                blockList.removeFromScene(scene, blockList, foodCotrol.snakeElongate());
+                blockList.removeFromScene(scene, blockList, foodCotrol.snakeElongate(), blockClonned);
                 foodCotrol.nextFood(food, block, blockList.BlockCloneList());
 
                 endOfGame.crashOnBand(stage, block);

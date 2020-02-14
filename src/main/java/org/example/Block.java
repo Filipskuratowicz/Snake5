@@ -25,28 +25,39 @@ public class Block extends Rectangle {
     }
 
 
-
-
     private int posX = 150;
     private int posY = 150;
 
+    boolean verHor = true;
 
     public void updateEvent(int num) {
         switch (num) {
             case 4:
-                direction = 4;
-                break;
+                if (verHor == false) {
+                    verHor = true;
+                    direction = 4;
+                    break;
+                }
 
             case 6:
-                direction = 6;
+                if (verHor == false) {
+                    verHor = true;
+                    direction = 6;
+                }
                 break;
 
             case 8:
-                direction = 8;
+                if (verHor == true) {
+                    verHor = false;
+                    direction = 8;
+                }
                 break;
 
             case 5:
-                direction = 5;
+                if (verHor == true) {
+                    verHor = false;
+                    direction = 5;
+                }
                 break;
         }
     }
@@ -80,22 +91,22 @@ public class Block extends Rectangle {
     }
 
     public void fieldUpdaterVerticalUp() {
-        posY-=10;
+        posY -= 10;
         updateVertical(posY);
     }
 
     public void fieldUpdaterVerticalDown() {
-        posY+=10;
+        posY += 10;
         updateVertical(posY);
     }
 
     public void fieldUpdaterHorizontalLeft() {
-        posX-=10;
+        posX -= 10;
         updateHorizontal(posX);
     }
 
     public void fieldUpdaterHorizontalRight() {
-        posX+=10;
+        posX += 10;
         updateHorizontal(posX);
     }
 
@@ -108,11 +119,13 @@ public class Block extends Rectangle {
     }
 
 
-
     public int getPosX() {
         return posX;
     }
-    public int getPosY() { return posY; }
+
+    public int getPosY() {
+        return posY;
+    }
 
     @Override
     public String toString() {

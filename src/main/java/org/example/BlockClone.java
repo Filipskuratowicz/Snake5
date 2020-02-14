@@ -13,6 +13,7 @@ public class BlockClone extends Rectangle  {
         posy = y/10;
         setTranslateX(posx * App.blockSize);
         setTranslateY(posy * App.blockSize);
+
     }
 
     public void setPositionOutside(int positionY, int positionX) {
