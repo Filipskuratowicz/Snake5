@@ -1,13 +1,14 @@
-package org.example;
+package org.example.blocks;
 
 import javafx.scene.shape.Rectangle;
+import org.example.App;
 
-public class Food extends Rectangle {
+public class FoodForSnake extends Rectangle {
 
     private int posx;
     private int posy;
 
-    public Food(int x, int y, org.example.Block b){
+    public FoodForSnake(int x, int y){
         super(App.blockSize, App.blockSize);
         posx = x;
         posy = y;

@@ -1,48 +1,40 @@
 package org.example.storage;
 
 import javafx.scene.Scene;
-import org.example.BlockClone;
+import org.example.blocks.SnakeTail;
 
 import java.util.ArrayList;
 
 
 public class BlockList {
-    boolean first = true;
 
-    ArrayList<BlockClone> blockQueue=new ArrayList<>() {
-    };
+    ArrayList<SnakeTail> blockQueue=new ArrayList<>() {};
+    boolean firstBlock = true;
 
-
-
-    public void addToQueue(BlockClone blockClone) {
+    public void addToQueue(SnakeTail blockClone) {
         blockQueue.add(blockClone);
     }
+
     public int blockListSize() {
        int blockS = blockQueue.size();
         return blockS;
     }
 
     public ArrayList BlockCloneList() {
+
         return blockQueue;
     }
 
+    public void removeFromScene(Scene scene, BlockList blockList, int lenght, SnakeTail blC) {
 
-    public void removeFromScene(Scene scene, BlockList blockList, int lenght, BlockClone blC) {
-        if (blC.getPosy() == 15 && blC.getPosx() == 15 && first == true) {
-            blC.setPositionOutside(400, 400);
-            first = false;
+        if (blC.getPosy() == 15 && blC.getPosx() == 15 && firstBlock == true) {
+            blC.setPositionOutside();
+            firstBlock = false;
         }
         if (blockList.blockListSize() >= lenght) {
-//            blockList.removeFromScene();
-            BlockClone bC = blockQueue.get(1);
-            bC.setPositionOutside(400,400);
+            SnakeTail bC = blockQueue.get(1);
+            bC.setPositionOutside();
             blockQueue.remove(1);
     }
 }
-
-//    public void removeFromScene() {
-//        BlockClone bC = blockQueue.get(1);
-//        bC.setPositionOutside(400,400);
-//        blockQueue.remove(1);
-//    }
 }

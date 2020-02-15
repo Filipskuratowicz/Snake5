@@ -1,4 +1,4 @@
-package org.example;
+package org.example.timer;
 
 import javafx.animation.AnimationTimer;
 
@@ -19,11 +19,9 @@ public abstract class  AnimationTimerExt extends AnimationTimer {
     @Override
     public void handle(long now) {
 
-
         if ((now - prevTime) < sleepNs) {
             return;
         }
-
         prevTime = now;
 
         handle();

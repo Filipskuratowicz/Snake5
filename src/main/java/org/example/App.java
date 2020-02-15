@@ -9,7 +9,11 @@ import org.example.Controls.ControlKey;
 import org.example.Controls.EndOfGame;
 import org.example.Controls.FoodCotrol;
 import org.example.Controls.SpeedControl;
+import org.example.blocks.FoodForSnake;
+import org.example.blocks.SnakeHead;
+import org.example.blocks.SnakeTail;
 import org.example.storage.BlockList;
+import org.example.timer.AnimationTimerExt;
 
 import java.util.ArrayList;
 
@@ -18,28 +22,21 @@ import java.util.ArrayList;
  */
 public class App extends Application {
 
-    static int blockSize = 10;
-    int width = 30;
-    int height = 30;
-
-
-
+    public static int blockSize = 10;
+     private int width = 30;
+     private int height = 30;
 
     @Override
-    public void start(Stage stage) throws InterruptedException {
+    public void start(Stage stage){
 
         VBox vBox = new VBox(10);
-        vBox.setPadding(new Insets(10));
+        vBox.setPadding(new Insets(20));
 
         Field field = new Field(width, height);
         vBox.getChildren().add(field);
 
-        Block block = new Block(15, 15, null);
-
-
-
+        SnakeHead block = new SnakeHead(15, 15);
         field.addBlock(block);
-
 
         Scene scene = new Scene(vBox);
         stage.setResizable(false);
@@ -47,7 +44,7 @@ public class App extends Application {
         stage.show();
 
         FoodCotrol foodCotrol = new FoodCotrol();
-        Food food = new Food(foodCotrol.ranX(), foodCotrol.ranY(), null);
+        FoodForSnake food = new FoodForSnake(foodCotrol.ranX(), foodCotrol.ranY());
         field.addFood(food);
 
         SpeedControl speedControl = new SpeedControl();
@@ -60,23 +57,26 @@ public class App extends Application {
             @Override
             public void handle() {
 
-
-
-                BlockClone blockClonned = new BlockClone(block.getPosX(), block.getPosY(), null);
-                String s = blockClonned.toString();
-                System.out.println(s);
+//              Adding tail to "Head Block" by copying and saving position
+                SnakeTail blockClonned = new SnakeTail(block.getPosX(), block.getPosY());
                 blockList.addToQueue(blockClonned);
                 field.addCloneBlock(blockClonned);
-                block.update();
 
+//              Update movement of the head
+                block.update();
+//              Removing snake tali by seting last block outside
                 blockList.removeFromScene(scene, blockList, foodCotrol.snakeElongate(), blockClonned);
+
+//              Controller of the food
                 foodCotrol.nextFood(food, block, blockList.BlockCloneList());
 
+//              Controllers of game ending
                 endOfGame.crashOnBand(stage, block);
                 endOfGame.crashOnYourself(stage, block, arrayList);
-
             }
         };
+
+//        Addtional timer for change speed of first timer
         AnimationTimerExt timerForSpeed = new AnimationTimerExt(100) {
             @Override
             public void handle() {
@@ -86,14 +86,11 @@ public class App extends Application {
 
         timerForSpeed.start();
         timer.start();
+
+//      Object for listening events
         ControlKey controlKey = new ControlKey();
         controlKey.keyControllers(scene, block, stage);
-
-
-
-
     }
-
 
     public static void main(String[] args) {
         launch();

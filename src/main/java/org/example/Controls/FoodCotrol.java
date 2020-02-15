@@ -1,8 +1,8 @@
 package org.example.Controls;
 
-import org.example.Block;
-import org.example.BlockClone;
-import org.example.Food;
+import org.example.blocks.SnakeHead;
+import org.example.blocks.SnakeTail;
+import org.example.blocks.FoodForSnake;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,7 +13,7 @@ public class FoodCotrol extends SpeedControl{
 
     Random random = new Random();
 
-    public void nextFood(Food food, Block block, ArrayList<BlockClone> arr) {
+    public void nextFood(FoodForSnake food, SnakeHead block, ArrayList<SnakeTail> arr) {
 
         if (food.getPosx() * 10 == block.getPosX() && food.getPosy() * 10 == block.getPosY()) {
             food.setPosx(random.nextInt(30));

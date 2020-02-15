@@ -1,13 +1,14 @@
-package org.example;
+package org.example.blocks;
 
 import javafx.scene.shape.Rectangle;
+import org.example.App;
 
-public class BlockClone extends Rectangle  {
+public class SnakeTail extends Rectangle  {
 
         private int posx;
         private int posy;
 
-           public BlockClone(int x, int y, org.example.Block b){
+           public SnakeTail(int x, int y){
         super(App.blockSize, App.blockSize);
         posx = x/10;
         posy = y/10;
@@ -16,9 +17,9 @@ public class BlockClone extends Rectangle  {
 
     }
 
-    public void setPositionOutside(int positionY, int positionX) {
-        setTranslateY(positionY);
-        setTranslateX(positionX);
+    public void setPositionOutside() {
+        setTranslateY(400);
+        setTranslateX(400);
     }
 
     @Override

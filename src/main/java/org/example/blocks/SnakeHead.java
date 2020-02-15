@@ -1,21 +1,19 @@
-package org.example;
+package org.example.blocks;
 
 
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import org.example.App;
 
 
-public class Block extends Rectangle {
-
+public class SnakeHead extends Rectangle {
 
     protected int direction;
     int posx;
     int posy;
-    boolean dirChange = true;
 
-
-    public Block(int x, int y, Block b) {
+    public SnakeHead(int x, int y) {
         super(App.blockSize, App.blockSize);
         posx = x;
         posy = y;
@@ -24,10 +22,8 @@ public class Block extends Rectangle {
         setFill(Color.CYAN);
     }
 
-
     private int posX = 150;
     private int posY = 150;
-
     boolean verHor = true;
 
     public void updateEvent(int num) {
@@ -125,15 +121,6 @@ public class Block extends Rectangle {
 
     public int getPosY() {
         return posY;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Block{");
-        sb.append("posX=").append(posX);
-        sb.append(", posY=").append(posY);
-        sb.append('}');
-        return sb.toString();
     }
 }
 

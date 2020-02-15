@@ -3,12 +3,12 @@ package org.example.Controls;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import org.example.Block;
+import org.example.blocks.SnakeHead;
 
 public class ControlKey {
 
 
-    public void keyControllers(Scene scene, Block block, Stage stage) {
+    public void keyControllers(Scene scene, SnakeHead block, Stage stage) {
         scene.setOnKeyPressed(e -> {
 
             System.out.println("I clicked");
