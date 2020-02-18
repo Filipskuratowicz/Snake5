@@ -1,10 +1,8 @@
 package org.example.Controls;
 
-import org.example.blocks.SnakeHead;
-import org.example.blocks.SnakeTail;
 import org.example.blocks.FoodForSnake;
+import org.example.blocks.SnakeHead;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class FoodCotrol extends SpeedControl{
@@ -13,14 +11,13 @@ public class FoodCotrol extends SpeedControl{
 
     Random random = new Random();
 
-    public void nextFood(FoodForSnake food, SnakeHead block, ArrayList<SnakeTail> arr) {
+    public void nextFood(FoodForSnake food, SnakeHead snakeHead) {
 
-        if (food.getPosx() * 10 == block.getPosX() && food.getPosy() * 10 == block.getPosY()) {
+        if (food.getPosx() * 10 == snakeHead.getPosX() && food.getPosy() * 10 == snakeHead.getPosY()) {
+
             food.setPosx(random.nextInt(30));
             food.setPosy(random.nextInt(30));
-
             lenght += 10;
-            System.out.println("from fC = " + lenght);
         }
     }
 
@@ -36,5 +33,8 @@ public class FoodCotrol extends SpeedControl{
         return random.nextInt(30);
     }
 
+    public void setLenght(int lenght) {
+        this.lenght = lenght;
     }
+}
 

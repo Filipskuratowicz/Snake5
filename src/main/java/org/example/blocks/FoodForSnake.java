@@ -9,11 +9,11 @@ public class FoodForSnake extends Rectangle {
     private int posy;
 
     public FoodForSnake(int x, int y){
-        super(App.blockSize, App.blockSize);
+        super(App.rectangle, App.rectangle);
         posx = x;
         posy = y;
-        setTranslateX(posx * App.blockSize);
-        setTranslateY(posy * App.blockSize);
+        setTranslateX(posx * App.rectangle);
+        setTranslateY(posy * App.rectangle);
 
     }
 

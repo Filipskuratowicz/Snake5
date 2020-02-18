@@ -9,11 +9,11 @@ public class SnakeTail extends Rectangle  {
         private int posy;
 
            public SnakeTail(int x, int y){
-        super(App.blockSize, App.blockSize);
+        super(App.rectangle, App.rectangle);
         posx = x/10;
         posy = y/10;
-        setTranslateX(posx * App.blockSize);
-        setTranslateY(posy * App.blockSize);
+        setTranslateX(posx * App.rectangle);
+        setTranslateY(posy * App.rectangle);
 
     }
 

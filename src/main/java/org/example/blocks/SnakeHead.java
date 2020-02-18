@@ -12,19 +12,18 @@ public class SnakeHead extends Rectangle {
     protected int direction;
     int posx;
     int posy;
-
-    public SnakeHead(int x, int y) {
-        super(App.blockSize, App.blockSize);
-        posx = x;
-        posy = y;
-        setTranslateX(posx * App.blockSize);
-        setTranslateY(posy * App.blockSize);
-        setFill(Color.CYAN);
-    }
-
     private int posX = 150;
     private int posY = 150;
     boolean verHor = true;
+
+    public SnakeHead(int x, int y) {
+        super(App.rectangle, App.rectangle);
+        posx = x;
+        posy = y;
+        setTranslateX(posx * App.rectangle);
+        setTranslateY(posy * App.rectangle);
+        setFill(Color.CYAN);
+    }
 
     public void updateEvent(int num) {
         switch (num) {
@@ -81,9 +80,7 @@ public class SnakeHead extends Rectangle {
                 fieldUpdaterVerticalDown();
                 direction = 5;
                 break;
-
         }
-
     }
 
     public void fieldUpdaterVerticalUp() {
@@ -121,6 +118,22 @@ public class SnakeHead extends Rectangle {
 
     public int getPosY() {
         return posY;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+        }
+
+    public void setVerHor(boolean verHor) {
+        this.verHor = verHor;
     }
 }
 

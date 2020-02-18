@@ -14,10 +14,12 @@ public class SpeedControl {
         if (oldLenght != newListSize) {
             oldLenght = newListSize;
             speed -= 0.2;
-
             if (speed >= 30) {
                 animationTimerExt.setSleepNs(speed);
             }
         }
+    }
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 }
