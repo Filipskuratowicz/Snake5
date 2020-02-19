@@ -7,7 +7,6 @@ import org.example.blocks.SnakeHead;
 
 public class ControlKey {
 
-
     public void keyControllers(Scene scene, SnakeHead block, Stage stage) {
         scene.setOnKeyPressed(e -> {
 
@@ -32,7 +31,6 @@ public class ControlKey {
                 stage.hide();
                 System.out.println("END OF THE GAME");
             }
-
         });
     }
 }

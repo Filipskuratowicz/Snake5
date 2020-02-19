@@ -39,7 +39,6 @@ public class BlockList {
     public int  removeAllFromList() {
         blockQueue.removeAll(blockQueue);
         return blockListSize();
-
     }
 
     public void setFirstBlock(boolean firstBlock) {

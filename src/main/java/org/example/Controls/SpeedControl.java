@@ -9,8 +9,8 @@ public class SpeedControl {
     int oldLenght;
 
     public void speedUpSnake(AnimationTimerExt animationTimerExt, BlockList blockList) {
-        int newListSize = blockList.blockListSize();
 
+        int newListSize = blockList.blockListSize();
         if (oldLenght != newListSize) {
             oldLenght = newListSize;
             speed -= 0.2;

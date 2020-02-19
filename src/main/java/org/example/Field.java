@@ -14,7 +14,6 @@ public class Field extends Pane {
     private int w;
     private int h;
 
-
     public Field(int width, int height) {
         w = width;
         h = height;

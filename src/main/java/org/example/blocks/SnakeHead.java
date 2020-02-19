@@ -1,19 +1,16 @@
 package org.example.blocks;
 
-
-
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.example.App;
-
 
 public class SnakeHead extends Rectangle {
 
     protected int direction;
     int posx;
     int posy;
-    private int posX = 150;
-    private int posY = 150;
+    private int posX;
+    private int posY;
     boolean verHor = true;
 
     public SnakeHead(int x, int y) {
@@ -22,6 +19,8 @@ public class SnakeHead extends Rectangle {
         posy = y;
         setTranslateX(posx * App.rectangle);
         setTranslateY(posy * App.rectangle);
+        posX = posx * 10;
+        posY = posy * 10;
         setFill(Color.CYAN);
     }
 
@@ -33,7 +32,6 @@ public class SnakeHead extends Rectangle {
                     direction = 4;
                     break;
                 }
-
             case 6:
                 if (verHor == false) {
                     verHor = true;

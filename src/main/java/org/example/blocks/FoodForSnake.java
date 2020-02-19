@@ -14,9 +14,7 @@ public class FoodForSnake extends Rectangle {
         posy = y;
         setTranslateX(posx * App.rectangle);
         setTranslateY(posy * App.rectangle);
-
     }
-
 
     public void setPosx(int posx) {
         this.posx = posx;

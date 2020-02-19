@@ -15,7 +15,6 @@ public class EndOfGame {
         if (block.getPosX() == -10 || block.getPosY() == -10) {
             isGameEnd = false;
         }
-
     }
 
     public void crashOnYourself(SnakeHead block, ArrayList<SnakeTail> arr) {

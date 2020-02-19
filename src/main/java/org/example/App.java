@@ -15,9 +15,6 @@ import org.example.timer.AnimationTimerExt;
 
 import java.util.ArrayList;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     public static int rectangle = 10;

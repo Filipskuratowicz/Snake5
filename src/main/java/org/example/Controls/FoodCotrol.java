@@ -8,13 +8,11 @@ import java.util.Random;
 public class FoodCotrol extends SpeedControl{
 
     int lenght = 40;
-
     Random random = new Random();
 
     public void nextFood(FoodForSnake food, SnakeHead snakeHead) {
 
         if (food.getPosx() * 10 == snakeHead.getPosX() && food.getPosy() * 10 == snakeHead.getPosY()) {
-
             food.setPosx(random.nextInt(30));
             food.setPosy(random.nextInt(30));
             lenght += 10;
