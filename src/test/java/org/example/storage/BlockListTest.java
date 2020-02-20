@@ -9,13 +9,12 @@ public class BlockListTest {
     BlockList blockList = new BlockList();
     SnakeTail snakeTail = new SnakeTail(14, 14);
 
-
     @Test
     public void removeAllFromListShouldReturn0() {
         blockList.addToQueue(snakeTail);
         blockList.removeAllFromList();
-        assertEquals(0, blockList.blockListSize());
 
+        assertEquals(0, blockList.blockListSize());
     }
 
     @Test

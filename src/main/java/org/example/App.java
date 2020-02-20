@@ -68,7 +68,7 @@ public class App extends Application {
                         stop();
                         field.getChildren().add(button);
                         button.setOnAction(e -> {
-                            field.resetAll(snakeHead, blockList, endOfGame, foodCotrol, food);
+                            field.resetAll(snakeHead, blockList, endOfGame, foodCotrol, food, speedControl);
                             start();
                         });
                     }

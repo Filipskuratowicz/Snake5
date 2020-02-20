@@ -13,7 +13,7 @@ public class SpeedControl {
         int newListSize = blockList.blockListSize();
         if (oldLenght != newListSize) {
             oldLenght = newListSize;
-            speed -= 0.2;
+            speed -= 2;
             if (speed >= 30) {
                 animationTimerExt.setSleepNs(speed);
             }

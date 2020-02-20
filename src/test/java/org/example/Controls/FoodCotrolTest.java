@@ -14,8 +14,8 @@ public class FoodCotrolTest {
 
         @Test
         public void snakeElongateshouldBe5AfterEeating1Food() {
-
             foodCotrol.nextFood(foodForSnake, snakeHead);
+
             assertEquals(5,foodCotrol.snakeElongate());
     }
 }

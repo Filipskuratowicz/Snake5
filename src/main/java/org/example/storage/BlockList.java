@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class BlockList {
 
     ArrayList<SnakeTail> blockQueue=new ArrayList<>() {};
+
     boolean firstBlock = true;
 
     public void addToQueue(SnakeTail blockClone) {

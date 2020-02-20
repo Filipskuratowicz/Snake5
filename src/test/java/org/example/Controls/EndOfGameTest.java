@@ -30,6 +30,7 @@ public class EndOfGameTest {
         blockList.addToQueue(blockClonned1);
         ArrayList arrayList = blockList.BlockCloneList();
         endOfGameM.crashOnYourself(snakeHead, arrayList);
+
         assertEquals(false, endOfGameM.returnInformationEnd());
     }
 }
