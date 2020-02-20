@@ -81,7 +81,7 @@ public class App extends Application {
                 }
             };
 
-//        Addtional timer for change speed of first timer
+//          Addtional timer for change refresh rate of the first timer
             AnimationTimerExt timerForSpeed = new AnimationTimerExt(100) {
                 @Override
                 public void handle() {
@@ -92,7 +92,7 @@ public class App extends Application {
             timerForSpeed.start();
             timer.start();
 
-//      Object for listening events
+//      listening events
         ControlKey controlKey = new ControlKey();
         controlKey.keyControllers(scene, snakeHead, stage);
     }

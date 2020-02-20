@@ -7,11 +7,11 @@ import org.example.App;
 public class SnakeHead extends Rectangle {
 
     protected int direction;
-    int posx;
-    int posy;
+    private int posx;
+    private int posy;
     private int posX;
     private int posY;
-    boolean verHor = true;
+    private boolean verHor = true;
 
     public SnakeHead(int x, int y) {
         super(App.rectangle, App.rectangle);
