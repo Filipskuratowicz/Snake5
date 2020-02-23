@@ -7,47 +7,43 @@ import org.example.App;
 public class SnakeHead extends Rectangle {
 
     protected int direction;
-    private int posx;
-    private int posy;
     private int posX;
     private int posY;
     private boolean verHor = true;
 
     public SnakeHead(int x, int y) {
         super(App.rectangle, App.rectangle);
-        posx = x;
-        posy = y;
-        setTranslateX(posx * App.rectangle);
-        setTranslateY(posy * App.rectangle);
-        posX = posx * 10;
-        posY = posy * 10;
+        setTranslateX(x * App.rectangle);
+        setTranslateY(y * App.rectangle);
+        posX = x * 10;
+        posY = y * 10;
         setFill(Color.CYAN);
     }
 
     public void updateEvent(int num) {
         switch (num) {
             case 4:
-                if (verHor == false) {
+                if (!verHor) {
                     verHor = true;
                     direction = 4;
                     break;
                 }
             case 6:
-                if (verHor == false) {
+                if (!verHor) {
                     verHor = true;
                     direction = 6;
                 }
                 break;
 
             case 8:
-                if (verHor == true) {
+                if (verHor) {
                     verHor = false;
                     direction = 8;
                 }
                 break;
 
             case 5:
-                if (verHor == true) {
+                if (verHor) {
                     verHor = false;
                     direction = 5;
                 }
@@ -58,11 +54,8 @@ public class SnakeHead extends Rectangle {
     public void update() {
         int z = direction;
         switch (z) {
+            case 4 :
             case 0:
-                fieldUpdaterHorizontalLeft();
-                direction = 4;
-                break;
-            case 4:
                 fieldUpdaterHorizontalLeft();
                 direction = 4;
                 break;

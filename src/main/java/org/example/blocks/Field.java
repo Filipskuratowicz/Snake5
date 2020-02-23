@@ -1,25 +1,18 @@
-package org.example;
+package org.example.blocks;
 
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import org.example.App;
 import org.example.Controls.EndOfGame;
 import org.example.Controls.FoodCotrol;
 import org.example.Controls.SpeedControl;
-import org.example.blocks.FoodForSnake;
-import org.example.blocks.SnakeHead;
-import org.example.blocks.SnakeTail;
 import org.example.storage.BlockList;
 
 public class Field extends Pane {
-    App app;
-    private int widt;
-    private int heig;
 
     public Field(int width, int height) {
-        widt = width;
-        heig = height;
 
-    setMinSize(widt * app.rectangle, heig * app.rectangle);
+        setMinSize(width * App.rectangle, height * App.rectangle);
     setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
     setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
     }

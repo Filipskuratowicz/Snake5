@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class BlockList {
 
-    ArrayList<SnakeTail> blockQueue=new ArrayList<>() {};
+    ArrayList<SnakeTail> blockQueue = new ArrayList<>() {};
 
     boolean firstBlock = true;
 
@@ -16,17 +16,16 @@ public class BlockList {
     }
 
     public int blockListSize() {
-       int blockS = blockQueue.size();
-        return blockS;
+       return blockQueue.size();
     }
 
-    public ArrayList BlockCloneList() {
+    public ArrayList<SnakeTail> BlockCloneList() {
         return blockQueue;
     }
 
     public void removeFromScene(BlockList blockList, int lenght, SnakeTail blC) {
 
-        if (blC.getPosy() == 15 && blC.getPosx() == 15 && firstBlock == true) {
+        if (blC.getPosy() == 15 && blC.getPosx() == 15 && firstBlock) {
             blC.setPositionOutside();
             firstBlock = false;
         }
@@ -37,11 +36,10 @@ public class BlockList {
     }
 }
 
-    public int  removeAllFromList() {
+    public void removeAllFromList() {
 
-        blockQueue.stream().forEach(st -> st.setPositionOutside());
-        blockQueue.removeAll(blockQueue);
-        return blockListSize();
+        blockQueue.forEach(SnakeTail::setPositionOutside);
+        blockQueue.removeAll(blockQueue.subList(0, blockQueue.size()));
     }
 
     public void setFirstBlock(boolean firstBlock) {

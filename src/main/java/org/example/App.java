@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.Controls.*;
+import org.example.blocks.Field;
 import org.example.blocks.FoodForSnake;
 import org.example.blocks.SnakeHead;
 import org.example.blocks.SnakeTail;
@@ -17,14 +18,14 @@ import java.util.ArrayList;
 
 public class App extends Application {
 
-    public static int rectangle = 10;
-     private int width = 30;
-     private int height = 30;
+    public static final int rectangle = 10;
     private static boolean firstAfterReset = false;
 
 
     @Override
     public void start(Stage stage){
+        int height = 30;
+        int width = 30;
 
         VBox vBox = new VBox(10);
         vBox.setPadding(new Insets(20));
@@ -48,7 +49,7 @@ public class App extends Application {
         SpeedControl speedControl = new SpeedControl();
         EndOfGame endOfGame = new EndOfGame();
         BlockList blockList = new BlockList();
-        ArrayList arrayList = blockList.BlockCloneList();
+        ArrayList<SnakeTail> arrayList = blockList.BlockCloneList();
         AnimationTimerExt timer = new AnimationTimerExt(300) {
 
                 @Override
@@ -62,7 +63,7 @@ public class App extends Application {
 
 //              Update movement of the head
                     snakeHead.update();
-                    if (firstAfterReset == true) {
+                    if (firstAfterReset) {
                         snakeHead.updateEvent(4);
                         firstAfterReset = false;
                     }
@@ -72,7 +73,7 @@ public class App extends Application {
                     endOfGame.crashOnYourself( snakeHead, arrayList);
 
                     // Restart of the game
-                    if (endOfGame.returnInformationEnd() == false) {
+                    if (!endOfGame.returnInformationEnd()) {
                             field.getChildren().add(button);
                         stop();
                         button.setOnAction(e -> {
