@@ -23,13 +23,13 @@ public class BlockList {
         return blockQueue;
     }
 
-    public void removeFromScene(BlockList blockList, int lenght, SnakeTail blC) {
+    public void removeFromScene(BlockList blockList, int length, SnakeTail blC) {
 
         if (blC.getPosy() == 15 && blC.getPosx() == 15 && firstBlock) {
             blC.setPositionOutside();
             firstBlock = false;
         }
-        else if (blockList.blockListSize() >= lenght) {
+        else if (blockList.blockListSize() >= length) {
             SnakeTail bC = blockQueue.get(1);
             bC.setPositionOutside();
             blockQueue.remove(1);

@@ -42,8 +42,8 @@ public class App extends Application {
         stage.show();
 
         ControlKey controlKey = new ControlKey();
-        FoodCotrol foodCotrol = new FoodCotrol();
-        FoodForSnake food = new FoodForSnake(foodCotrol.ranX(), foodCotrol.ranY());
+        FoodControl foodControl = new FoodControl();
+        FoodForSnake food = new FoodForSnake(foodControl.ranX(), foodControl.ranY());
         field.addFood(food);
         Button button = new Button( "RESTART?" );
         SpeedControl speedControl = new SpeedControl();
@@ -57,9 +57,9 @@ public class App extends Application {
                     System.out.println(blockList.blockListSize());
 
 //              Adding tail to "Head Block" by copying and saving position
-                    SnakeTail blockClonned = new SnakeTail(snakeHead.getPosX(), snakeHead.getPosY());
-                    blockList.addToQueue(blockClonned);
-                    field.addCloneBlock(blockClonned);
+                    SnakeTail blockCloned = new SnakeTail(snakeHead.getPosX(), snakeHead.getPosY());
+                    blockList.addToQueue(blockCloned);
+                    field.addCloneBlock(blockCloned);
 
 //              Update movement of the head
                     snakeHead.update();
@@ -77,7 +77,7 @@ public class App extends Application {
                             field.getChildren().add(button);
                         stop();
                         button.setOnAction(e -> {
-                            field.resetAll(snakeHead, blockList, endOfGame, foodCotrol, speedControl);
+                            field.resetAll(snakeHead, blockList, endOfGame, foodControl, speedControl);
                             field.getChildren().remove(button);
                             snakeHead.updateEvent(8);
                             start();
@@ -85,18 +85,18 @@ public class App extends Application {
                         });
                     }
 
-//              Removing snake tali by seting last block outside
-                    blockList.removeFromScene(blockList, foodCotrol.snakeElongate(), blockClonned);
+//              Removing snake tali by setting last block outside
+                    blockList.removeFromScene(blockList, foodControl.snakeElongate(), blockCloned);
 
 //              Controller of the food
-                    foodCotrol.nextFood(food, snakeHead);
+                    foodControl.nextFood(food, snakeHead);
 
 //               Listening events
                     controlKey.keyControllers(scene, snakeHead, stage);
                 }
             };
 
-//          Addtional timer for change refresh rate of the first timer
+//          Additional timer for change refresh rate of the first timer
         AnimationTimerExt timerForSpeed = new AnimationTimerExt(100) {
                 @Override
                 public void handle() {

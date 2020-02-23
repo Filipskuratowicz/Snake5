@@ -5,22 +5,22 @@ import org.example.blocks.SnakeHead;
 
 import java.util.Random;
 
-public class FoodCotrol extends SpeedControl{
+public class FoodControl extends SpeedControl{
 
-    int lenght = 40;
+    int length = 40;
     Random random = new Random();
 
     public void nextFood(FoodForSnake food, SnakeHead snakeHead) {
 
-        if (food.getPosx() * 10 == snakeHead.getPosX() && food.getPosy() * 10 == snakeHead.getPosY()) {
-            food.setPosx(random.nextInt(30));
-            food.setPosy(random.nextInt(30));
-            lenght += 10;
+        if (food.getPosX() * 10 == snakeHead.getPosX() && food.getPosY() * 10 == snakeHead.getPosY()) {
+            food.setPosX(random.nextInt(30));
+            food.setPosY(random.nextInt(30));
+            length += 10;
         }
     }
 
     public int snakeElongate() {
-        return lenght/10;
+        return length /10;
     }
 
     public int ranX() {
@@ -31,8 +31,8 @@ public class FoodCotrol extends SpeedControl{
         return random.nextInt(30);
     }
 
-    public void setLenght(int lenght) {
-        this.lenght = lenght;
+    public void setLength(int length) {
+        this.length = length;
     }
 }
 

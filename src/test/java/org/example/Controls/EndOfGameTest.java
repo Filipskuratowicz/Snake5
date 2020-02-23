@@ -14,8 +14,8 @@ public class EndOfGameTest {
     final SnakeHead snakeHead = new SnakeHead(10, 10);
     final SnakeHead snakeHeadOutsideBand = new SnakeHead(30, 7);
     BlockList blockList = new BlockList();
-    SnakeTail blockClonned = new SnakeTail(snakeHead.getPosX()+10, snakeHead.getPosY());
-    SnakeTail blockClonned1 = new SnakeTail(snakeHead.getPosX(), snakeHead.getPosY());
+    SnakeTail blockCloned = new SnakeTail(snakeHead.getPosX()+10, snakeHead.getPosY());
+    SnakeTail blockCloned1 = new SnakeTail(snakeHead.getPosX(), snakeHead.getPosY());
     EndOfGame endOfGameM = new EndOfGame();
 
     @Test
@@ -27,8 +27,8 @@ public class EndOfGameTest {
 
     @Test
     public void returnInformationEndAfterSnakeCrashOnBandShouldChangeEndOfGameToFalse() {
-        blockList.addToQueue(blockClonned);
-        blockList.addToQueue(blockClonned1);
+        blockList.addToQueue(blockCloned);
+        blockList.addToQueue(blockCloned1);
         ArrayList<SnakeTail> arrayList = blockList.BlockCloneList();
         endOfGameM.crashOnYourself(snakeHead, arrayList);
 

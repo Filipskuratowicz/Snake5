@@ -4,7 +4,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import org.example.App;
 import org.example.Controls.EndOfGame;
-import org.example.Controls.FoodCotrol;
+import org.example.Controls.FoodControl;
 import org.example.Controls.SpeedControl;
 import org.example.storage.BlockList;
 
@@ -28,7 +28,7 @@ public class Field extends Pane {
     }
 
     public void resetAll(SnakeHead head, BlockList blockList, EndOfGame endOfGame,
-                         FoodCotrol foodCotrol, SpeedControl speedControl) {
+                         FoodControl foodControl, SpeedControl speedControl) {
         head.setPosX(150);
         head.setPosY(150);
         endOfGame.setGameEnd(true);
@@ -37,7 +37,7 @@ public class Field extends Pane {
         blockList.setFirstBlock(true);
         head.setDirection(4);
         head.setVerHor(true);
-        foodCotrol.setLenght(40);
+        foodControl.setLength(40);
         speedControl.setSpeed(200);
     }
 }

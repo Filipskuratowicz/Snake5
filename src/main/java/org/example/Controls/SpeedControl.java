@@ -6,13 +6,13 @@ import org.example.storage.BlockList;
 public class SpeedControl {
 
     int speed = 200;
-    int oldLenght;
+    int oldLength;
 
     public void speedUpSnake(AnimationTimerExt animationTimerExt, BlockList blockList) {
 
         int newListSize = blockList.blockListSize();
-        if (oldLenght != newListSize) {
-            oldLenght = newListSize;
+        if (oldLength != newListSize) {
+            oldLength = newListSize;
             speed -= 2;
             if (speed >= 30) {
                 animationTimerExt.setSleepNs(speed);

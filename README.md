@@ -15,5 +15,3 @@ First release of Snake game
 - JavaFx
 - JUnit
 
-#### Bug:
-- After restarting game, snake head is temporary detached from tail. Change of snake direction, completely elimnate the problem. Bug, does not influence any game functionality. 

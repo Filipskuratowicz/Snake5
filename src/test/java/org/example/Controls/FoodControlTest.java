@@ -6,16 +6,16 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class FoodCotrolTest {
+public class FoodControlTest {
 
         FoodForSnake foodForSnake = new FoodForSnake(15, 15);
         SnakeHead snakeHead = new SnakeHead(15, 15);
-        FoodCotrol foodCotrol = new FoodCotrol();
+        FoodControl foodControl = new FoodControl();
 
         @Test
-        public void snakeElongateshouldBe5AfterEeating1Food() {
-            foodCotrol.nextFood(foodForSnake, snakeHead);
+        public void snakeElongateShouldBe5AfterEating1Food() {
+            foodControl.nextFood(foodForSnake, snakeHead);
 
-            assertEquals(5,foodCotrol.snakeElongate());
+            assertEquals(5, foodControl.snakeElongate());
     }
 }

@@ -5,25 +5,25 @@ import org.example.App;
 
 public class FoodForSnake extends Rectangle {
 
-    private int posx;
-    private int posy;
+    private int posX;
+    private int posY;
 
     public FoodForSnake(int x, int y){
         super(App.rectangle, App.rectangle);
-        posx = x;
-        posy = y;
-        setTranslateX(posx * App.rectangle);
-        setTranslateY(posy * App.rectangle);
+        posX = x;
+        posY = y;
+        setTranslateX(posX * App.rectangle);
+        setTranslateY(posY * App.rectangle);
     }
 
-    public void setPosx(int posx) {
-        this.posx = posx;
-        updateHorizontal(posx*10);
+    public void setPosX(int posX) {
+        this.posX = posX;
+        updateHorizontal(posX *10);
     }
 
-    public void setPosy(int posy) {
-        this.posy = posy;
-        updateVertical(posy*10);
+    public void setPosY(int posY) {
+        this.posY = posY;
+        updateVertical(posY *10);
     }
 
     public void updateVertical(int positionY) {
@@ -34,11 +34,11 @@ public class FoodForSnake extends Rectangle {
         setTranslateX(positionX);
     }
 
-    public int getPosx() {
-        return posx;
+    public int getPosX() {
+        return posX;
     }
 
-    public int getPosy() {
-        return posy;
+    public int getPosY() {
+        return posY;
     }
 }
