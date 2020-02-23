@@ -35,18 +35,16 @@ public class Field extends Pane {
     }
 
     public void resetAll(SnakeHead head, BlockList blockList, EndOfGame endOfGame,
-                         FoodCotrol foodCotrol, FoodForSnake food, SpeedControl speedControl) {
-        getChildren().clear();
+                         FoodCotrol foodCotrol, SpeedControl speedControl) {
         head.setPosX(150);
         head.setPosY(150);
         endOfGame.setGameEnd(true);
         blockList.removeAllFromList();
+        System.out.println("How many blocks in the snakeTail:  " + blockList.blockListSize());
         blockList.setFirstBlock(true);
         head.setDirection(4);
         head.setVerHor(true);
         foodCotrol.setLenght(40);
-        getChildren().add(head);
-        getChildren().add(food);
         speedControl.setSpeed(200);
 
     }

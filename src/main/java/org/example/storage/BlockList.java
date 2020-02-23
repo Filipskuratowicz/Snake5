@@ -38,6 +38,8 @@ public class BlockList {
 }
 
     public int  removeAllFromList() {
+
+        blockQueue.stream().forEach(st -> st.setPositionOutside());
         blockQueue.removeAll(blockQueue);
         return blockListSize();
     }

@@ -20,6 +20,7 @@ public class App extends Application {
     public static int rectangle = 10;
      private int width = 30;
      private int height = 30;
+    private static boolean isButtonAdded = false;
 
     @Override
     public void start(Stage stage){
@@ -38,6 +39,7 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
 
+        ControlKey controlKey = new ControlKey();
         FoodCotrol foodCotrol = new FoodCotrol();
         FoodForSnake food = new FoodForSnake(foodCotrol.ranX(), foodCotrol.ranY());
         field.addFood(food);
@@ -64,12 +66,14 @@ public class App extends Application {
                     endOfGame.crashOnBand(snakeHead);
                     endOfGame.crashOnYourself( snakeHead, arrayList);
 
+                    // Restart of the game
                     if (endOfGame.returnInformationEnd() == false) {
+                            field.getChildren().add(button);
                         stop();
-                        field.getChildren().add(button);
                         button.setOnAction(e -> {
-                            field.resetAll(snakeHead, blockList, endOfGame, foodCotrol, food, speedControl);
-                            start();
+                            field.resetAll(snakeHead, blockList, endOfGame, foodCotrol, speedControl);
+                            field.getChildren().remove(button);
+                           start();
                         });
                     }
 
@@ -78,24 +82,26 @@ public class App extends Application {
 
 //              Controller of the food
                     foodCotrol.nextFood(food, snakeHead);
+
+//               Listening events
+                    controlKey.keyControllers(scene, snakeHead, stage);
                 }
             };
 
 //          Addtional timer for change refresh rate of the first timer
-            AnimationTimerExt timerForSpeed = new AnimationTimerExt(100) {
+        AnimationTimerExt timerForSpeed = new AnimationTimerExt(100) {
                 @Override
                 public void handle() {
                     speedControl.speedUpSnake(timer, blockList);
                 }
             };
 
-            timerForSpeed.start();
-            timer.start();
+        timerForSpeed.start();
+        timer.start();
 
-//      listening events
-        ControlKey controlKey = new ControlKey();
-        controlKey.keyControllers(scene, snakeHead, stage);
+
     }
+
     public static void main(String[] args) {
         launch();
     }
