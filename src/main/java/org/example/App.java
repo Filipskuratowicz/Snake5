@@ -20,7 +20,8 @@ public class App extends Application {
     public static int rectangle = 10;
      private int width = 30;
      private int height = 30;
-    private static boolean isButtonAdded = false;
+    private static boolean firstAfterReset = false;
+
 
     @Override
     public void start(Stage stage){
@@ -61,6 +62,10 @@ public class App extends Application {
 
 //              Update movement of the head
                     snakeHead.update();
+                    if (firstAfterReset == true) {
+                        snakeHead.updateEvent(4);
+                        firstAfterReset = false;
+                    }
 
 //              Controllers of game ending
                     endOfGame.crashOnBand(snakeHead);
@@ -73,7 +78,9 @@ public class App extends Application {
                         button.setOnAction(e -> {
                             field.resetAll(snakeHead, blockList, endOfGame, foodCotrol, speedControl);
                             field.getChildren().remove(button);
-                           start();
+                            snakeHead.updateEvent(8);
+                            start();
+                            firstAfterReset = true;
                         });
                     }
 

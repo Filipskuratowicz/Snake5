@@ -46,6 +46,5 @@ public class Field extends Pane {
         head.setVerHor(true);
         foodCotrol.setLenght(40);
         speedControl.setSpeed(200);
-
     }
 }
